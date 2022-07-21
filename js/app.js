@@ -350,10 +350,13 @@ city.prototype.getRandomCookiesNum = function () {
     //   for (let j = 0; j < cityInt.length; j++){
     //     total = total + cityInt[j].cookiesPerhour[i];
     //   }
-    //   thElem = document.createElement('th');
-    //   thElem.textContent = hours[i];
-    //   row.appendChild(thElem);
-    // create a new row and append the th into it
+    //   let row = document.createElement('tr');
+    //   salesTable.appendChild(row);
+
+    //     let thElem = document.createElement('th');    
+    //      thElem.textContent = total;
+    //      row.appendChild(thElem);
+    // // create a new row and append the th into it
 
     //   console.log(total);
     // }
@@ -413,3 +416,31 @@ lima.getRandomCustNum();
 lima.getRandomCookiesNum();
 console.log(lima);
 lima.render();
+
+
+let grandTotal = 0
+
+function renderFooter() {
+  let tr = document.createElement('tr');
+  salesTable.appendChild(tr);
+
+  let th = document.createElement('th');
+  th.textContent = 'Totals';
+  tr.appendChild(th);
+
+  for (let i = 0; i < hours.length; i++) {
+    let hourlyTotal = 0;
+    for (let j = 0; j < cityInt.length; j++) {
+      hourlyTotal = hourlyTotal + cityInt[j].cookiesPerhour[i];
+      grandTotal = grandTotal + cityInt[j].cookiesPerhour[i];
+    }
+    let td = document.createElement('td');
+    td.textContent = hourlyTotal;
+    tr.appendChild(td);
+  }
+  let td = document.createElement('td');
+  td.textContent = grandTotal;
+  tr.appendChild(td);
+}
+
+renderFooter();
