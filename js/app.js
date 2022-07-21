@@ -344,6 +344,19 @@ city.prototype.getRandomCookiesNum = function () {
     tdElem.textContent = this.cookiesTotal;
     row.appendChild(tdElem);
 
+
+    // for (let i = 0; i < this.cookiesPerhour.length; i++){
+    //   let total = 0;
+    //   for (let j = 0; j < cityInt.length; j++){
+    //     total = total + cityInt[j].cookiesPerhour[i];
+    //   }
+    //   thElem = document.createElement('th');
+    //   thElem.textContent = hours[i];
+    //   row.appendChild(thElem);
+    // create a new row and append the th into it
+
+    //   console.log(total);
+    // }
   };
 
 function renderheader() {
@@ -363,8 +376,9 @@ function renderheader() {
   thElem = document.createElement('th');
   thElem.textContent = 'Total';
   row.appendChild(thElem);
-};
 
+
+};
 
 
 renderheader();
