@@ -2,6 +2,8 @@
 
 let hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
 
+let myform = document.getElementById('my-form');
+
 function randomCustNum(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
 };
@@ -344,22 +346,6 @@ city.prototype.getRandomCookiesNum = function () {
     tdElem.textContent = this.cookiesTotal;
     row.appendChild(tdElem);
 
-
-    // for (let i = 0; i < this.cookiesPerhour.length; i++){
-    //   let total = 0;
-    //   for (let j = 0; j < cityInt.length; j++){
-    //     total = total + cityInt[j].cookiesPerhour[i];
-    //   }
-    //   let row = document.createElement('tr');
-    //   salesTable.appendChild(row);
-
-    //     let thElem = document.createElement('th');    
-    //      thElem.textContent = total;
-    //      row.appendChild(thElem);
-    // // create a new row and append the th into it
-
-    //   console.log(total);
-    // }
   };
 
 function renderheader() {
@@ -442,5 +428,39 @@ function renderFooter() {
   td.textContent = grandTotal;
   tr.appendChild(td);
 }
+
+
+
+function handleSubmit(event) {
+  event.preventDefault();
+
+  let cityName = event.target.cityName.value;
+  let minCust = event.target.minCust.value;
+  let maxCust = event.target.maxCust.value;
+  let avgCookieSale = event.target.avgCookieSale.value;
+
+  let newCity = new city(cityName, minCust, maxCust, avgCookieSale);
+
+  newCity.render();
+
+  let td = document.createElement('td');
+  td.textContent = cookiesPerhour;
+  tr.appendChild(td);
+}
+myform.addEventListener('submit', handleSubmit);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 renderFooter();
