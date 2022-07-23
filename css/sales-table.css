@@ -1,0 +1,26 @@
+fieldset {
+  background-color: lightgrey;
+  display: flex;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  flex-direction: column;
+  padding-left: 50px;
+  margin-right: 200px;
+
+  fieldset.label {}
+}
+
+table,
+th,
+td {
+  border: 1px solid;
+  align-content: space-around;
+  padding: 10px;
+  padding-left: 30px;
+  padding-right: 30PX;
+  background-color: lightgreen;
+}
+
+body {
+  background-color: bisque;
+}

@@ -406,9 +406,14 @@ lima.render();
 
 let grandTotal = 0
 
+let tableFoot = document.createElement('tfoot');
+salesTable.appendChild(tableFoot);
+
 function renderFooter() {
   let tr = document.createElement('tr');
-  salesTable.appendChild(tr);
+  tableFoot.appendChild(tr);
+
+  
 
   let th = document.createElement('th');
   th.textContent = 'Totals';
@@ -427,6 +432,8 @@ function renderFooter() {
   let td = document.createElement('td');
   td.textContent = grandTotal;
   tr.appendChild(td);
+
+
 }
 
 
@@ -435,20 +442,29 @@ function handleSubmit(event) {
   event.preventDefault();
 
   let cityName = event.target.cityName.value;
-  let minCust = event.target.minCust.value;
-  let maxCust = event.target.maxCust.value;
-  let avgCookieSale = event.target.avgCookieSale.value;
+  let minCust = +event.target.minCust.value;
+  let maxCust = +event.target.maxCust.value;
+  let avgCookieSale = +event.target.avgCookieSale.value;
 
   let newCity = new city(cityName, minCust, maxCust, avgCookieSale);
+  newCity.getRandomCustNum();
+  newCity.getRandomCookiesNum();
+  console.log(newCity);
 
+ 
+  tableFoot.textContent = '';
+  // salesTable.hourlyTotal();
+  // salesTable.grandTotal();
   newCity.render();
+  renderFooter();
 
-  let td = document.createElement('td');
-  td.textContent = cookiesPerhour;
-  tr.appendChild(td);
+
+  // let td = document.createElement('td');
+  // td.textContent = cookiesPerhour;
+  // tr.appendChild(td);
 }
-myform.addEventListener('submit', handleSubmit);
 
+myform.addEventListener('submit', handleSubmit);
 
 
 
